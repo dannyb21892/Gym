@@ -12,9 +12,9 @@ user4 = User.create(name: "Farshad")
 user5 = User.create(name: "Pedro")
 user6 = User.create(name: "Ivan")
 
-plan1 = Plan.create(name: "Bronze", price: 29)
-plan2 = Plan.create(name: "Silver", price: 39)
-plan3 = Plan.create(name: "Gold", price: 49)
+plan1 = Plan.create(name: "Bronze", price: 29, level: 1, lesson_limit: 1)
+plan2 = Plan.create(name: "Silver", price: 39, level: 2, lesson_limit: 2)
+plan3 = Plan.create(name: "Gold", price: 49, level: 3, lesson_limit: 3)
 
 user1.plan = plan1
 user2.plan = plan2
@@ -36,11 +36,11 @@ lesson1.trainer = trainer1
 lesson2.trainer = trainer2
 lesson3.trainer = trainer3
 
-plan1.lessons << lesson1
+user1.lessons << lesson1
 
-plan2.lessons << lesson1
-plan2.lessons << lesson2
+user2.lessons << lesson1
+user2.lessons << lesson2
 
-plan3.lessons << lesson1
-plan3.lessons << lesson2
-plan3.lessons << lesson3
+user3.lessons << lesson1
+user3.lessons << lesson2
+user3.lessons << lesson3
