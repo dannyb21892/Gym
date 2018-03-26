@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/", to: "application#home", as: "root"
   resources :trainers
   resources :lessons
   resources :class_plans
