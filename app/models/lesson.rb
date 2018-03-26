@@ -11,6 +11,7 @@ class Lesson < ApplicationRecord
         popular = []
         popular << l
         count = l.users.count
+        # [popular]
       elsif l.users.count == count
         popular << l
       end

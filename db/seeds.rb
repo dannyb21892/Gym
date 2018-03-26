@@ -44,3 +44,17 @@ user2.lessons << lesson2
 user3.lessons << lesson1
 user3.lessons << lesson2
 user3.lessons << lesson3
+
+
+user1.save
+user2.save
+user3.save
+user4.save
+user5.save
+user6.save
+trainer1.save
+trainer2.save
+trainer3.save
+lesson1.save
+lesson2.save
+lesson3.save

@@ -9,8 +9,8 @@ class Plan < ApplicationRecord
     Plan.find_by(level: self.types.max)
   end
 
-  def next_level(current_plan)
-    current_plan.level < self.maximum.level ? Plan.find_by(level: current + 1) : self.maximum
+  def next_level#(current_plan)
+    self.level < self.class.maximum.level ? Plan.find_by(level: self.level + 1) : self.class.maximum
   end
 
   def user_names
@@ -28,6 +28,6 @@ class Plan < ApplicationRecord
   end
 
   def revenue_forecast(price_increase)
-    self.plan_revenue * ((self.price + price_increase)/self.price)
+    (self.plan_revenue.to_f * ((self.price.to_f + price_increase.to_f)/self.price.to_f)).to_i
   end
 end
