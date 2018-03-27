@@ -70,6 +70,15 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def delete
+    @user = User.find(params[:id])
+  end
+
+  def goodbye
+    @user = User.find(params[:id])
+    @user.destroy
+  end
+
   private
 
   def user_params

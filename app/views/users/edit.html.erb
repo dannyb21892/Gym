@@ -20,9 +20,15 @@
     <%=f.collection_select :unenroll_lessons, @user.lessons, :id, :name_date_trainer, :include_blank => true%>
   <%end%>
 
-  <%=f.submit%><br>
+  <%=f.submit%><br><br>
 
-  <%if @user.plan.level > 1%>
-    <%=link_to "Downgrade your account? (pls no)", downgrade_path%>
-    <%end%>
 <%end%>
+
+<%=link_to "Cancel changes and return to profile.", @user%><br><br><br><br><br><br><br><br>
+
+<%if @user.plan.level > 1%>
+  <%=link_to "Downgrade your account? (pls no)", downgrade_path%><br>
+<%end%>
+
+
+<%=link_to "Delete your account? (also pls no)", delete_user_path%>

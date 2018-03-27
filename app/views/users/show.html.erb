@@ -2,11 +2,14 @@
 
 <h3>Currently signed up for the <%=@user.plan.name%> tier plan</h3>
 
-<h4><%=@user.name%> is enrolled in the following lessons:</h4>
-<ul>
-  <%@user.lessons.each do |l|%>
-    <li><%=link_to l.name_date_trainer, l%></li>
-  <%end%>
-</ul>
-
-<%=link_to "Account settings and changes", edit_user_path(@user)%>
+<%if @user.lessons.count == 0 %>
+  <h4><%=@user.name%> is not currently enrolled in any lessons. Click below to enroll!</h4>
+<%else%>
+  <h4><%=@user.name%> is enrolled in the following lessons:</h4>
+  <ul>
+    <%@user.lessons.each do |l|%>
+      <li><%=link_to l.name_date_trainer, l%></li>
+    <%end%>
+  </ul>
+<%end%>
+<br><%=link_to "Account settings and changes", edit_user_path(@user)%>

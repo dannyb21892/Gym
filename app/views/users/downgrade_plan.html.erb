@@ -1,5 +1,5 @@
 <h1>Are you really sure you want to downgrade?</h1><br>
-<%=link_to "I changed my mind", @user%><br>
+<%=link_to "I changed my mind", @user%><br><br>
 
 <%=form_with model: @user, url: downgrade_path do |f|%>
   <%if @user.lessons.count >= @user.plan.lesson_limit%>
@@ -7,5 +7,5 @@
     <p>You must remove at least one lesson to downgrade your account successfully:</p>
     <%=f.collection_select :lessons, @user.lessons, :id, :name_date_trainer%>
   <%end%>
-  <%=f.submit "Yeah I hate health"%>
+  <%=f.submit "Yeah I hate being healthy"%>
 <%end%>
