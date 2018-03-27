@@ -1,0 +1,17 @@
+<h1>Check out our professional level fitness lessons!</h1>
+
+<%=form_with method: :get, action: lessons_path do |f|%>
+  <%=f.label "Show all lessons taught by a certain trainer"%>
+  <%=f.collection_select :trainer_select, Trainer.all, :id, :name, :include_blank => "Do not filter"%><br>
+
+  <%=f.label "Show all lessons currently open for enrollment"%>
+  <%=f.check_box :open_select%><br>
+
+  <%=f.submit "Search!"%>
+<%end%>
+
+<ul>
+<%@lessons.each do |lesson|%>
+  <li><%=link_to "#{lesson.name}", lesson%></li>
+<%end%>
+</ul>
