@@ -9,10 +9,16 @@ class User < ApplicationRecord
 
   def enroll(lesson)
     if self.eligible_for_more_lessons? && !lesson.full? && !self.time_conflict?(lesson)
-      Enrollment.create(user_id: self.id, lesson_id: lesson.id)
+      self.enrollments << Enrollment.create(user_id: self.id, lesson_id: lesson.id)
+
       #Creates join object between user and lesson
     end
   end
+  
+  def lesson_names
+    self.lessons.map { |l| l.name}
+  end
+
 
   def enrolled?(lesson)
     self.lessons.include?(lesson)
@@ -41,15 +47,20 @@ class User < ApplicationRecord
   end
 
   def upgrade_plan
-    if self.plan.level < Plan.maximum
+    if self.plan.level < Plan.maximum.level
       self.plan = plan.next_level
       self.save
     end
+    self.plan
   end
 
-  def trainers
-    self.lessons.map{|l| l.trainer.name}
-  end
+  def downgrade_plan
+    if self.plan.level > 1
+      self.plan = Plan.find_by(level: (self.plan.level-1))
+      self.save
+    end
+    self.plan
+  end #downgrade_plan
 
 
 
