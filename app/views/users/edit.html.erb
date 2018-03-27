@@ -1,0 +1,28 @@
+<h1><%=@user.name%>'s account settings</h1>
+
+<%=form_with model: @user do |f|%>
+  <%=f.label :name%>
+  <%=f.text_field :name%><br>
+
+  <%if @user.plan.level != Plan.maximum.level%>
+    <%=f.label :upgrade%>
+    <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select, :include_blank => "Click here to select a plan to upgrade to"%>
+  <%end%>
+
+  <%if @user.plan.lesson_limit > @user.lessons.count%>
+    <p>You have <%=pluralize((@user.plan.lesson_limit - @user.lessons.count), "available lesson slot")%>.</p>
+    <p>Enroll in another?</p>
+    <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer, :include_blank => true%>
+  <%end%>
+
+  <%if @user.lessons.count > 0%>
+    <p>Would you like to unenroll from any of your scheduled lessons?</p>
+    <%=f.collection_select :unenroll_lessons, @user.lessons, :id, :name_date_trainer, :include_blank => true%>
+  <%end%>
+
+  <%=f.submit%><br>
+
+  <%if @user.plan.level > 1%>
+    <%=link_to "Downgrade your account? (pls no)", downgrade_path%>
+    <%end%>
+<%end%>

@@ -1,0 +1,11 @@
+<%=form_with model: @user do |f|%>
+
+  <%=f.label :name%>
+  Name: <%=f.text_field :name%><br>
+
+    <%=f.label :plan%>
+  Select a membership plan: <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select%><br>
+
+  Select one lesson to get started: <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer%><br>
+  <%=f.submit%>
+<%end%>

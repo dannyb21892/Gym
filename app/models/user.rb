@@ -9,12 +9,10 @@ class User < ApplicationRecord
 
   def enroll(lesson)
     if self.eligible_for_more_lessons? && !lesson.full? && !self.time_conflict?(lesson)
-      self.enrollments << Enrollment.create(user_id: self.id, lesson_id: lesson.id)
-
-      #Creates join object between user and lesson
+      self.lessons << lesson
     end
   end
-  
+
   def lesson_names
     self.lessons.map { |l| l.name}
   end
@@ -24,7 +22,7 @@ class User < ApplicationRecord
     self.lessons.include?(lesson)
   end
 
-  def unenroll_lesson(lesson)
+  def unenroll(lesson)
     if self.enrolled?(lesson)
       Enrollment.find_by(user_id: self.id, lesson_id: lesson.id).destroy
     end

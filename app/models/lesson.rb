@@ -24,8 +24,7 @@ class Lesson < ApplicationRecord
     #used >= just in case of overbooking somehow
   end
 
-  # def time_slot
-  #
-  # end
-
+  def name_date_trainer
+    "#{self.name} on #{self.time.split(" ")[0]}s at #{self.time.split(" ")[1]} with #{self.trainer.name}"
+  end
 end
