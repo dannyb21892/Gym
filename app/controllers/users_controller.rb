@@ -61,14 +61,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.name = params[:user][:name]
 
-    if params[:user][:plan_id] && params[:user][:plan_id] != ""
-      @user.plan = Plan.find(params[:user][:plan_id])
-    end
-    if params[:user][:lessons] && params[:user][:lessons] != ""
-      @user.enroll(Lesson.find(params[:user][:lessons]))
-    end
-    if params[:user][:unenroll_lessons] && params[:user][:unenroll_lessons] != ""
-      @user.unenroll(Lesson.find(params[:user][:unenroll_lessons]))
+    if params[:commit] && params[:commit] == "Update User"
+
+      if params[:user][:plan_id] && params[:user][:plan_id] != ""
+        @user.plan = Plan.find(params[:user][:plan_id])
+      end
+      if params[:user][:lessons] && params[:user][:lessons] != ""
+        @user.enroll(Lesson.find(params[:user][:lessons]))
+      end
+      if params[:user][:unenroll_lessons] && params[:user][:unenroll_lessons] != ""
+        @user.unenroll(Lesson.find(params[:user][:unenroll_lessons]))
+      end
+
+    elsif params[:commit] && params[:commit] == "Change Password"
+      if @user.authenticate(params[:user][:current_password]) && params[:user][:new_password] == params[:user][:confirm_new_password]
+        #@user.password_digest = BCrypt::Password.create()
+        @user.password = params[:user][:new_password]
+      else
+        redirect_to edit_user_path(@user)
+        return
+      end
+
     end
     @user.save
     redirect_to @user

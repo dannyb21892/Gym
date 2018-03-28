@@ -26,9 +26,21 @@
 
 <%=link_to "Cancel changes and return to profile.", @user%><br><br><br><br><br><br><br><br>
 
+<%=form_with model: @user do |f|%>
+  <%=f.label :current_password%>
+  <%=f.password_field :current_password%><br>
+
+  <%=f.label :new_password%>
+  <%=f.password_field :new_password%><br>
+
+  <%=f.label :confirm_new_password%>
+  <%=f.password_field :confirm_new_password%><br>
+
+  <%=f.submit "Change Password"%><br><br>
+<%end%>
+
 <%if @user.plan.level > 1%>
   <%=link_to "Downgrade your account? (pls no)", downgrade_path%><br>
 <%end%>
-
 
 <%=link_to "Delete your account? (#{"also " if @user.plan.level > 1}pls no)", delete_user_path%>

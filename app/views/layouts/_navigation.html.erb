@@ -5,7 +5,8 @@
   <li><%= link_to 'Trainer Team', trainers_path %></li>
   <li><%= link_to 'Members', users_path %></li>
   <%if session[:user_id] %>
-    <li><%=link_to "Logout", logout_path%></li>
+    <li><%=link_to "| Welcome " + "#{User.find(session[:user_id]).username}", User.find(session[:user_id])%></li>
+    <li><%=link_to "Logout |", logout_path%></li>
   <% else %>
     <li><%=link_to "Login", login_path%></li>
     <li> OR </li>
