@@ -42,7 +42,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.enroll(Lesson.find(params[:user][:lessons]))
     @user.save
-    redirect_to @user
+    # redirect_to @user
+    redirect_to login_path
   end
 
   def show
