@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
-  
+  def session_match
+    redirect_to '/' if current_user.id != params[:id].to_i
+  end
+
+
   def home
   end
 end

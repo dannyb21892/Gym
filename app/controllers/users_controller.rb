@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_filter :authorize
-  
+  before_action :authorize, except: [:index, :new, :create]
+  before_action :session_match, only: [:edit, :update, :downgrade_plan, :delete, :goodbye]
 
 
   def downgrade_plan
