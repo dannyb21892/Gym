@@ -4,5 +4,11 @@
   <li><%= link_to 'Lessons', lessons_path %></li>
   <li><%= link_to 'Trainer Team', trainers_path %></li>
   <li><%= link_to 'Members', users_path %></li>
+  <%if session[:user_id] %>
+    <li><%=link_to "Logout", logout_path%></li>
+  <% else %>
+    <li><%=link_to "Login", login_path%></li>
+  <!-- if user_loggedin then show login name-->
+  <%end%>
   <%= render 'layouts/navigation_links' %>
 </ul>
