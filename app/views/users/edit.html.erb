@@ -31,4 +31,4 @@
 <%end%>
 
 
-<%=link_to "Delete your account? (also pls no)", delete_user_path%>
+<%=link_to "Delete your account? (#{"also " if @user.plan.level > 1}pls no)", delete_user_path%>

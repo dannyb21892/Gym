@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # before_filter :authorize
+  
 
 
   def downgrade_plan
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
     @user.enroll(Lesson.find(params[:user][:lessons]))
     @user.save
     # redirect_to @user
-    redirect_to login_path
+    redirect_to url_for(:controller => :sessions, :action => :create_from_signup, :username => params[:user][:username], :password => params[:user][:password])
   end
 
   def show

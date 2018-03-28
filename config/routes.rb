@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  get '/auto_login' => 'sessions#create_from_signup'
+
 
   # These routes will be for signup. The first renders a form in the browse, the second will
 # receive the form and create a user in our database using the data given to us by the user.
