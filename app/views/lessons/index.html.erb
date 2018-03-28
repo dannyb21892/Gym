@@ -16,7 +16,6 @@
 
 <%if @is_open || @trainer%>
   <p>The following lessons are those which are <%="open for enrollment" if @is_open%> <%="and " if @is_open && @trainer%> <%="taught by #{@trainer.name}" if @trainer%>.</p>
-  <%=link_to "Clear Filters", lessons_path%>
 <%end%>
 
 <ul>
