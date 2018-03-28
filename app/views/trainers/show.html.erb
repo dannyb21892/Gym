@@ -1,0 +1,14 @@
+<h1>Trainer Info</h1>
+
+<h1><%=@trainer.name%></h1>
+<!-- < % =<img src="" alt="">%> -->
+<%if @image%>
+  <!-- <img src="< %=@image%>" alt=""> -->
+  <img src="<%=asset_path(@image)%>" alt=""   height="20%" width="20%">
+<%end %>
+<h3>Lessons held by trainer:</h3>
+<ul>
+  <%@trainer.lessons.each do |lesson|%>
+  <li><%=link_to "#{lesson.name} held at #{lesson.time} in #{lesson.room}", lesson_path(lesson)%></li>
+  <%end%>
+</ul>
