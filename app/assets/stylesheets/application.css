@@ -17,4 +17,43 @@
      max-width: 100%;
      height: auto;
      width: auto\9; /* ie8 */
+     /* background-size:cover */
+ }
+
+ body {
+     color: white;
+     background-color: purple
+ }
+ header {
+   border: 0;
+
+ }
+ .nav {
+   color: white;
+   background-color: purple;
+   border-style:  none;
+ }
+
+ .nav a:link {
+     color: white;
+ }
+
+ /* visited link */
+ .nav a:visited {
+     color: white;
+ }
+
+ /* mouse over link */
+ .nav a:hover {
+     color: white;
+ }
+
+ /* selected link */
+ .nav a:active {
+     color: white;
+ }
+
+
+ ul {
+   margin: 0;
  }
