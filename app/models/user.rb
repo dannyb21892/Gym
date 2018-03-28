@@ -2,6 +2,7 @@ class User < ApplicationRecord
   belongs_to :plan
   has_many :enrollments
   has_many :lessons, through: :enrollments
+  has_secure_password
 
   def eligible_for_more_lessons?
     self.lessons.count < self.plan.lesson_limit

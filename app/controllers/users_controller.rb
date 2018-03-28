@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # before_filter :authorize
+
 
   def downgrade_plan
       @user = User.find(params[:id])
@@ -82,6 +84,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :plan_id)
+    params.require(:user).permit(:name, :plan_id,:password, :password_confirmation, :username)
   end
 end
