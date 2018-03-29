@@ -1,6 +1,12 @@
 <h1>List of Trainers</h1>
-<ul>
+<!-- <ul> -->
+
+
+<div id="wrap">
+   <div id="content">
 <%@trainers.each do |trainer|%>
 <li><%=link_to trainer.name, trainer_path(trainer)%></li>
 <%end%>
-</ul>
+</div>
+</div>
+<!-- </ul> -->

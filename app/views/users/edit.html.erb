@@ -1,5 +1,9 @@
 <h1><%=@user.name%>'s account settings</h1>
 
+<div id="wrap">
+   <div id="content">
+
+
 <%=form_with model: @user do |f|%>
   <%=f.label :name%>
   <%=f.text_field :name%><br>
@@ -44,3 +48,6 @@
 <%end%>
 
 <%=link_to "Delete your account? (#{"also " if @user.plan.level > 1}pls no)", delete_user_path%>
+
+</div>
+</div>

@@ -1,7 +1,11 @@
 <h1>List of Gym Members</h1>
 
-<ul>
+<!-- <ul> -->
+<div id="wrap">
+   <div id="content">
 <%@users.each do |user|%>
   <li><%=link_to user.name, user%></li>
 <%end%>
-</ul>
+</div>
+</div>
+<!-- </ul> -->

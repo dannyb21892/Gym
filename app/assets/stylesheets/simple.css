@@ -1,7 +1,7 @@
 /*
  * Simple CSS stylesheet for a navigation bar and flash messages.
  */
-  /* 
+  /*
   ol{
     text-align: center
    }  */
@@ -71,4 +71,17 @@ ul.nav li a {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
+}
+
+#wrap {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+
+#content {
+    text-align: left;
+    float: left;
+    position: relative;
+    left: -50%;
 }

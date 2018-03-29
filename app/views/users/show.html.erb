@@ -6,11 +6,11 @@
   <h4><%=@user.name%> is not currently enrolled in any lessons. Click below to enroll!</h4>
 <%else%>
   <h4><%=@user.name%> is enrolled in the following lessons:</h4>
-  <ul>
+  <!-- <ul> -->
     <%@user.lessons.each do |l|%>
       <li><%=link_to l.name_date_trainer, l%></li>
     <%end%>
-  </ul>
+  <!-- </ul> -->
 <%end%>
 
 <%if session[:user_id] == @user.id%>
