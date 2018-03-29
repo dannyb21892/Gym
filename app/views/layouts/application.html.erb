@@ -20,6 +20,7 @@
     </header>
     <main role="main">
       <%= render 'layouts/messages' %>
+      <img src="<%=asset_path('logo.png')%>" alt="" style="z-index: 1; position: absolute; left: 0px; top: 0px;">
       <%= yield %>
     </main>
   </body>
