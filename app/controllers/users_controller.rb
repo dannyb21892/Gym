@@ -40,12 +40,22 @@ class UsersController < ApplicationController
   end
 
   def create
+    # byebug
     @user = User.new(user_params)
+    if !@user.valid?
+      # byebug   #we placed this here because during validation of name existance or username uniqueness, the app would have error
+      # render :new
+      redirect_to new_user_path, :flash => {:error => @user.errors.full_messages} #we redirect rather than render because render + collection_select was causing an error
+      return
+    end
     @user.enroll(Lesson.find(params[:user][:lessons]))
-    @user.save
+    if @user.save
     # redirect_to @user
-    redirect_to url_for(:controller => :sessions, :action => :create_from_signup, :username => params[:user][:username], :password => params[:user][:password])
-  end
+      redirect_to url_for(:controller => :sessions, :action => :create_from_signup, :username => params[:user][:username], :password => params[:user][:password])
+    else
+      render :new
+    end #if
+  end #end create
 
   def show
     @user = User.find(params[:id])

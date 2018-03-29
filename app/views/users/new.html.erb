@@ -1,16 +1,20 @@
-
 <div id="wrap">
    <div id="content">
    <!-- This will be centered -->
-   <%= form_for :user, url: '/users' do |f| %>
 
+   <% if flash[:error]%>
+     <% flash[:error].each do |attr, msg| %>
+       <li style="color:red;background-color:black">   <%= "#{attr} #{msg}" if @user.errors[attr].first == msg %> </li>
+     <% end %>
+   <% end %>
+
+   <%= form_for :user, url: '/users' do |f| %>
      Your Name: <%= f.text_field :name %> <br>
      Loginname: <%= f.text_field :username %><br>
      Password: <%= f.password_field :password %><br>
      Password Confirmation: <%= f.password_field :password_confirmation %><br>
      <%=f.label :plan%>
      Select a membership plan:<br> <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select%><br>
-
      Select one lesson to get started:<br> <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer%><br>
      <%= f.submit "Submit" %>
 

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def create
+  def create #login
     user = User.find_by_username(params[:username])
     # If the user exists AND the password entered is correct.
     if user && user.authenticate(params[:password])
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def create_from_signup
+  def create_from_signup #autologin after signup
     user = User.find_by_username(params[:username])
     # If the user exists AND the password entered is correct.
     if user.authenticate(params[:password])
