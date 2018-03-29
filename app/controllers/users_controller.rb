@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     if !@user.valid?
       # byebug   #we placed this here because during validation of name existance or username uniqueness, the app would have error
       # render :new
-      redirect_to new_user_path #we redirect rather than render because render + collection_select was causing an error
+      redirect_to new_user_path, :flash => {:error => @user.errors.full_messages} #we redirect rather than render because render + collection_select was causing an error
       return
     end
     @user.enroll(Lesson.find(params[:user][:lessons]))
