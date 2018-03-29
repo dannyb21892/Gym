@@ -27,20 +27,23 @@ lesson6 = Lesson.create(name: "LeaveHumanityBehind",trainer: Trainer.find(6), du
 lesson7 = Lesson.create(name: "Calf farm",          trainer: Trainer.find(7), duration: 30, capacity: 19, room: "Leg AHOY room",  time: "Monday 2:30pm")
 lesson8 = Lesson.create(name: "Power ParadICE",     trainer: Trainer.find(1), duration: 60, capacity: 22, room: "Power Room",     time: "Tuesday 3:30pm")
 lesson9 = Lesson.create(name: "Forearm of Fury",    trainer: Trainer.find(2), duration: 30, capacity: 20, room: "Power Room",     time: "Wednesday 12:30pm")
+lesson10 = Lesson.create(name: "Hellfire Heartpump",trainer: Trainer.find(3), duration: 30, capacity: 20, room: "BikeRoom",       time: "Thursday 4:00pm")
+lesson11 = Lesson.create(name: "Deltoids or Die",   trainer: Trainer.find(4), duration: 30, capacity: 20, room: "Power Room",     time: "Friday 4:00pm")
+lesson12 = Lesson.create(name: "Adamantium Abs",    trainer: Trainer.find(5), duration: 30, capacity: 20, room: "Power Room",     time: "Sunday 6:00am")
 
 
 
 
-for i in 0..50
-  user =User.create(name: Faker::Simpsons.character, plan_id: rand(1..3))
+for i in 0..119
+  user =User.create(name: Faker::Simpsons.character, plan_id: rand(1..3), username: "test#{i}", password: "test")
   # puts User.new(name: Faker::Simpsons.character, plan_id: rand(3))
-  user.lessons << Lesson.find(rand(1..9))
+  user.lessons << Lesson.find(rand(1..12))
 end
-for i in 0..50
-  user =User.create(name: Faker::DragonBall.character, plan_id: rand(1..3))
-  # puts User.new(name: Faker::Simpsons.character, plan_id: rand(3))
-  user.lessons << Lesson.find(rand(1..9))
-end
+# for i in 0..50
+#   user =User.create(name: Faker::DragonBall.character, plan_id: rand(1..3))
+#   # puts User.new(name: Faker::Simpsons.character, plan_id: rand(3))
+#   user.lessons << Lesson.find(rand(1..9))
+# end
 
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
