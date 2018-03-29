@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :lessons, through: :enrollments
   has_secure_password
   validates :username, uniqueness: true
-  validates :name, presence: true
+  validates :name,:username, presence: true
 
   def eligible_for_more_lessons?
     self.lessons.count < self.plan.lesson_limit
