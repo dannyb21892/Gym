@@ -39,6 +39,8 @@ for i in 0..119
   # puts User.new(name: Faker::Simpsons.character, plan_id: rand(3))
   user.lessons << Lesson.find(rand(1..12))
 end
+
+User.create(name: "Administrator", plan_id: 3, username: "admin", password: "admin", admin: true)
 # for i in 0..50
 #   user =User.create(name: Faker::DragonBall.character, plan_id: rand(1..3))
 #   # puts User.new(name: Faker::Simpsons.character, plan_id: rand(3))

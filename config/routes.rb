@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get "/", to: "application#home", as: "root"
+
+  get "/admin/analytics", to: "users#analytics", as: "analytics"
+
   get "/users/:id/downgrade_plan", to: "users#downgrade_plan", as: "downgrade"
   patch "/users/:id/downgrade_plan", to: "users#downgrade_plan"
   get "/users/:id/delete", to: "users#delete", as: "delete_user"

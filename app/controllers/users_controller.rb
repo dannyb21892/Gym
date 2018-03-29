@@ -106,9 +106,22 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def analytics
+    #if current_user.admin
+    @basic_users = User.all.select{|u| u.admin.nil?}
+    @plans = Plan.all
+    if current_user.admin
+      render :analytics
+      return
+    else
+      redirect_to "/"
+      return
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :plan_id,:password, :password_confirmation, :username)
+    params.require(:user).permit(:name, :plan_id,:password, :password_confirmation, :username, :admin)
   end
 end

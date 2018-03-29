@@ -14,5 +14,8 @@
     <li> <%=link_to "Signup", signup_path%></li>
   <!-- if user_loggedin then show login name-->
   <%end%>
+  <%if session[:user_id] && current_user.admin%>
+    <li><%=link_to "Gym Analytics", analytics_path%></li>
+  <%end%>
   <%= render 'layouts/navigation_links' %>
 </ul>
