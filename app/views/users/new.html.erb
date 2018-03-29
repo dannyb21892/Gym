@@ -7,6 +7,7 @@
   Password: <%= f.password_field :password %><br>
   Password Confirmation: <%= f.password_field :password_confirmation %><br>
   <%=f.label :plan%>
+
   Select a membership plan: <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select%><br>
 
   Select one lesson to get started: <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer%><br>
@@ -14,6 +15,6 @@
 
 <% end %>
 
-<!-- 
+<!--
 Parameters: {"utf8"=>"✓", "authenticity_token"=>"176bA47aUmeNdt7+nUhHHWX//nBVA9OiaBQajllipRD6/sN2gYYbMSwKdCtPZG7vfNzYL8RXzqR9ElSwjTUqFw==", "user"=>{"name"=>"Joe", "username"=>"JoeCool", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "plan_id"=>"3", "lessons"=>"1"}, "commit"=>"Submit"}
 Unpermitted parameters: :username, :password, :password_confirmation, :lessons -->
