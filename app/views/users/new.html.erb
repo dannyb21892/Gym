@@ -9,13 +9,13 @@
    <% end %>
 
    <%= form_for :user, url: '/users' do |f| %>
-     Your Name: <%= f.text_field :name %> <br>
-     Loginname: <%= f.text_field :username %><br>
-     Password: <%= f.password_field :password %><br>
-     Password Confirmation: <%= f.password_field :password_confirmation %><br>
+     Your Name: <br> <%= f.text_field :name %> <br> <p></p>
+     Loginname: <br><%= f.text_field :username %><br> <p></p>
+     Password: <br><%= f.password_field :password %><br> <p></p>
+     Password Confirmation:<br> <%= f.password_field :password_confirmation %><br><p></p>
      <%=f.label :plan%>
-     Select a membership plan:<br> <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select%><br>
-     Select one lesson to get started:<br> <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer%><br>
+     Select a membership plan:<br> <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select%><br><p></p>
+     Select one lesson to get started:<br> <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer%><br><p></p>
      <%= f.submit "Submit" %>
 
    <% end %>

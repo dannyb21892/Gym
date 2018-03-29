@@ -5,22 +5,22 @@
 
 
 <%=form_with model: @user do |f|%>
-  <%=f.label :name%>
-  <%=f.text_field :name%><br>
+  <%=f.label :name%> <br>
+  <%=f.text_field :name%><p></p>
 
   <%if @user.plan.level != Plan.maximum.level%>
-    <%=f.label :upgrade%>
-    <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select, :include_blank => "Click here to select a plan to upgrade to"%>
+    <%=f.label :upgrade%><br>
+    <%=f.collection_select :plan_id, @plans, :id, :name_for_collection_select, :include_blank => "Click here to select a plan to upgrade to"%><p></p>
   <%end%>
 
   <%if @user.plan.lesson_limit > @user.lessons.count%>
-    <p>You have <%=pluralize((@user.plan.lesson_limit - @user.lessons.count), "available lesson slot")%>.</p>
-    <p>Enroll in another?</p>
+    You have <%=pluralize((@user.plan.lesson_limit - @user.lessons.count), "available lesson slot")%>.<br>
+    Enroll in another?<br>
     <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer, :include_blank => true%>
   <%end%>
 
   <%if @user.lessons.count > 0%>
-    <p>Would you like to unenroll from any of your scheduled lessons?</p>
+    Would you like to unenroll from any of your scheduled lessons? <br>
     <%=f.collection_select :unenroll_lessons, @user.lessons, :id, :name_date_trainer, :include_blank => true%>
   <%end%>
 
@@ -28,23 +28,24 @@
 
 <%end%>
 
-<%=link_to "Cancel changes and return to profile.", @user%><br><br><br><br><br><br><br><br>
+<%=link_to "Cancel changes and return to profile.", @user%><br><br><br>
 
+<h3>Password change form</h3>
 <%=form_with model: @user do |f|%>
-  <%=f.label :current_password%>
-  <%=f.password_field :current_password%><br>
+  <%=f.label :current_password%><br>
+  <%=f.password_field :current_password%><p></p>
 
-  <%=f.label :new_password%>
-  <%=f.password_field :new_password%><br>
+  <%=f.label :new_password%><br>
+  <%=f.password_field :new_password%><p></p>
 
-  <%=f.label :confirm_new_password%>
-  <%=f.password_field :confirm_new_password%><br>
+  <%=f.label :confirm_new_password%><br>
+  <%=f.password_field :confirm_new_password%><p></p>
 
-  <%=f.submit "Change Password"%><br><br>
+  <%=f.submit "Change Password"%><br><br><p></p>
 <%end%>
 
 <%if @user.plan.level > 1%>
-  <%=link_to "Downgrade your account? (pls no)", downgrade_path%><br>
+  <p> <%=link_to "Downgrade your account? (pls no)", downgrade_path%><br></p>
 <%end%>
 
 <%=link_to "Delete your account? (#{"also " if @user.plan.level > 1}pls no)", delete_user_path%>
