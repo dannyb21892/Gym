@@ -1,7 +1,14 @@
-<h1>Purchase one of our elite fitness plans!</h1>
+<h1 style="text-align:center">Purchase one of our elite fitness plans!</h1>
 
-<ol>
+<!-- <ul> -->
 <%@plans.each do |plan|%>
-  <li><%=link_to "Join the #{plan.users.count} members currently enjoying our #{plan.name} tier membership! Click here for details.", plan%></li><br>
+  <!-- <div class="" style="margin-left:auto;margin-right:auto;display:block;"> -->
+
+
+  <li style="text-align:center;"><%=link_to "Join the #{plan.users.count} members currently enjoying our #{plan.name} tier membership! Click here for details.", plan%></li><br>
+  <%image_name=plan.name.downcase%>
+  <%image_name << ".png"%>
+  <a href="<%=plan_path(plan)%>"><img  src="<%=asset_path(image_name)%>" alt="" style="margin-left:auto;margin-right:auto;display:block;"></a>
 <%end%>
-</ol>
+  <!-- </div> -->
+<!-- </ul> -->

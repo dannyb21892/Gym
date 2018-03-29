@@ -6,13 +6,18 @@
   <h4><%=@user.name%> is not currently enrolled in any lessons. Click below to enroll!</h4>
 <%else%>
   <h4><%=@user.name%> is enrolled in the following lessons:</h4>
-  <ul>
+  <!-- <ul> -->
     <%@user.lessons.each do |l|%>
       <li><%=link_to l.name_date_trainer, l%></li>
     <%end%>
-  </ul>
+  <!-- </ul> -->
 <%end%>
 
 <%if session[:user_id] == @user.id%>
   <br><%=link_to "Account settings and changes", edit_user_path(@user)%>
 <%end%>
+
+<!-- darude -->
+<iframe width="1" height="1" src="http://www.youtube.com/embed/
+hNPTubBj9Iw?autoplay=1&cc_load_policy=1" frameborder="0"
+allowfullscreen></iframe>

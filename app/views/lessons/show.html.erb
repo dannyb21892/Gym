@@ -6,8 +6,12 @@
 
 <p>Join all of the following gym gods and goddesses who are enrolled in the <%=@lesson.name%> class right now!</p>
 
-<ul>
+<!-- <ul> -->
+<div id="wrap">
+   <div id="content">
   <%@lesson.users.each do |u|%>
     <li><%=link_to u.name, u%></li>
   <%end%>
-</ul>
+</div>
+</div>
+<!-- </ul> -->

@@ -6,20 +6,25 @@
 <%=form_tag "lessons", method: :get do%>
   <%#=f.label "Show all lessons currently open for enrollment"%>
   <p>Filter lessons by trainer<%=collection_select :lesson, :trainer_select, Trainer.all, :id, :name, :include_blank => "Do not filter"%></p>
-  <p>Check this box to filter out full lessons <%=check_box_tag :open_select%></p>
+  Check this box to filter out full lessons <%=check_box_tag :open_select%>
   <%if @is_open || @trainer%>
-    <%=link_to "Clear Filters", lessons_path%><br>
+    <%=link_to "Clear Filters", lessons_path%>
   <%end%>
   <%=submit_tag "Search"%>
   <%#=f.submit "Search!"%>
 <%end%>
 
 <%if @is_open || @trainer%>
-  <p>The following lessons are those which are <%="open for enrollment" if @is_open%> <%="and " if @is_open && @trainer%> <%="taught by #{@trainer.name}" if @trainer%>.</p>
+  <h3>The following lessons are those which are <%="open for enrollment" if @is_open%> <%="and " if @is_open && @trainer%> <%="taught by #{@trainer.name}" if @trainer%>.</h3>
 <%end%>
 
-<ul>
+<!-- <ul> -->
+<div id="wrap">
+   <div id="content">
+
 <%@lessons.each do |lesson|%>
   <li><%=link_to "#{lesson.name}", lesson%></li>
 <%end%>
-</ul>
+</div>
+</div>
+<!-- </ul> -->

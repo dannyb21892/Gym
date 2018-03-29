@@ -5,13 +5,17 @@
 
 <%if @plan.level < Plan.maximum.level%>
   <p>Not enough? Of course, not! Not for you, you absolute beast.</p>
-  <%=link_to "Click here to view the next tier up!", @plan.next_level%>
+  <span style="border:12px solid black;background-color:black">  <%=link_to "Click here to view the next tier up!", @plan.next_level%> </span>
 <%end%>
 
 <p>Join all of the following gym gods and goddesses who are enjoying their <%=@plan.name%> plan right now!</p>
 
-<ul>
+<!-- <ul> -->
+<div id="wrap">
+   <div id="content">
   <%@plan.users.each do |u|%>
     <li><%=link_to u.name, u%></li>
   <%end%>
-</ul>
+</div>
+</div>
+<!-- </ul> -->

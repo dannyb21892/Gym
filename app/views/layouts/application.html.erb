@@ -6,6 +6,12 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Gym" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <!-- < %= javascript_include_tag [
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ]%>
+    < %= stylesheet_link_tag [
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" ]%> -->
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -14,7 +20,11 @@
     </header>
     <main role="main">
       <%= render 'layouts/messages' %>
+      <img src="<%=asset_path('logo.png')%>" alt="" style="z-index: 1; position: absolute; left: 0px; top: 0px;">
       <%= yield %>
     </main>
+    <!-- <iframe width="1" height="1" src="http://www.youtube.com/embed/
+    yWUPMd9fJOs?autoplay=1&cc_load_policy=1" frameborder="0"
+    allowfullscreen></iframe> -->
   </body>
 </html>
