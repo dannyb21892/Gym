@@ -1,6 +1,10 @@
 /*
  * Simple CSS stylesheet for a navigation bar and flash messages.
  */
+  /* 
+  ol{
+    text-align: center
+   }  */
 main {
   /* background-color: #eee; */
   background-color: purple;
