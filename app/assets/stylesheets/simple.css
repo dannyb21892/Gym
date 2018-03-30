@@ -85,3 +85,8 @@ ul.nav li a {
     position: relative;
     left: -50%;
 }
+
+li  {
+  list-style-type: none;
+
+}
