@@ -37,7 +37,7 @@ header {
   /* -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
   /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   font-family: Arial, sans-serif;
 }
@@ -85,3 +85,34 @@ ul.nav li a {
     position: relative;
     left: -50%;
 }
+
+li  {
+  list-style-type: none;
+}
+
+body{
+ margin: 0px;
+}
+
+.nav {
+  background-color: black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+.background-image {
+/* background-size: 120%; */
+/* height: 130%;
+width: 130%; */
+ /* background-size: cover; */
+}
+/*
+.nav a:hover {
+  background-color: white;
+  color: purple;
+} */
+/* mouse over link */
+/* .nav a:hover {
+    color: red;
+} */
