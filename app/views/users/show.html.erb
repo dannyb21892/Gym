@@ -13,7 +13,7 @@
   <!-- </ul> -->
 <%end%>
 
-<%if session[:user_id] == @user.id%>
+<%if session[:user_id] == @user.id || current_user.admin%>
   <br><%=link_to "Account settings and changes", edit_user_path(@user)%>
 <%end%>
 

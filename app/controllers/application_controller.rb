@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def session_match
-    redirect_to '/' if current_user.id != params[:id].to_i
+    redirect_to '/' if (current_user.id != params[:id].to_i && !current_user.admin)
   end
 
 

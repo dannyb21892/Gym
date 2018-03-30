@@ -82,6 +82,9 @@ class UsersController < ApplicationController
       if params[:user][:unenroll_lessons] && params[:user][:unenroll_lessons] != ""
         @user.unenroll(Lesson.find(params[:user][:unenroll_lessons]))
       end
+      if params[:user][:admin] && params[:user][:admin] == "1"
+        @user.admin = true
+      end
 
     elsif params[:commit] && params[:commit] == "Change Password"
       if @user.authenticate(params[:user][:current_password]) && params[:user][:new_password] == params[:user][:confirm_new_password]

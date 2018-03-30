@@ -3,8 +3,12 @@
 <div id="wrap">
    <div id="content">
 
-
 <%=form_with model: @user do |f|%>
+
+  <%if current_user.admin%>
+    <%=f.label "Toggle #{@user.name}'s administrator status"%>
+    <%=f.check_box :admin, {}, 1, nil%><p></p>
+  <%end%>
   <%=f.label :name%> <br>
   <%=f.text_field :name%><p></p>
 
@@ -16,7 +20,7 @@
   <%if @user.plan.lesson_limit > @user.lessons.count%>
     You have <%=pluralize((@user.plan.lesson_limit - @user.lessons.count), "available lesson slot")%>.<br>
     Enroll in another?<br>
-    <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer, :include_blank => true%>
+    <%=f.collection_select :lessons, @lessons, :id, :name_date_trainer, :include_blank => true%><p></p>
   <%end%>
 
   <%if @user.lessons.count > 0%>
@@ -30,18 +34,20 @@
 
 <%=link_to "Cancel changes and return to profile.", @user%><br><br><br>
 
-<h3>Password change form</h3>
-<%=form_with model: @user do |f|%>
-  <%=f.label :current_password%><br>
-  <%=f.password_field :current_password%><p></p>
+<%if current_user.id == @user.id%>
+  <h3>Password change form</h3>
+  <%=form_with model: @user do |f|%>
+    <%=f.label :current_password%><br>
+    <%=f.password_field :current_password%><p></p>
 
-  <%=f.label :new_password%><br>
-  <%=f.password_field :new_password%><p></p>
+    <%=f.label :new_password%><br>
+    <%=f.password_field :new_password%><p></p>
 
-  <%=f.label :confirm_new_password%><br>
-  <%=f.password_field :confirm_new_password%><p></p>
+    <%=f.label :confirm_new_password%><br>
+    <%=f.password_field :confirm_new_password%><p></p>
 
-  <%=f.submit "Change Password"%><br><br><p></p>
+    <%=f.submit "Change Password"%><br><br><p></p>
+  <%end%>
 <%end%>
 
 <%if @user.plan.level > 1%>
